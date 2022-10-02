@@ -53,5 +53,5 @@ WindowExamplePresenter >> okToChange [
 { #category : #icons }
 WindowExamplePresenter >> taskbarIcon [
 
-	^ Smalltalk ui icons iconNamed: #thumbsUp
+	^ self iconNamed: #thumbsUp
 ]
