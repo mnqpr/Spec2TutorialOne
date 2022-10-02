@@ -13,10 +13,19 @@ Class {
 ProtocolViewerPresenter class >> exampleHorizontal [
 
 	| presenter |
-	
 	presenter := self new.
-	
+
 	presenter openWithLayout: presenter horizontalLayout
+]
+
+{ #category : #layout }
+ProtocolViewerPresenter >> apiAndEventsLayout [
+
+	^ SpBoxLayout newTopToBottom
+		  add: api;
+		  add: events;
+		  spacing: 3;
+		  yourself
 ]
 
 { #category : #initialization }
@@ -41,7 +50,7 @@ ProtocolViewerPresenter >> connectPresenters [
 { #category : #layout }
 ProtocolViewerPresenter >> defaultLayout [
 
-	^ self verticalLayout
+	^ self horizontalLayout
 ]
 
 { #category : #layout }
@@ -49,15 +58,15 @@ ProtocolViewerPresenter >> horizontalLayout [
 
 	^ SpBoxLayout newLeftToRight
 		  add: #models;
-		  add: #api;
-		  add: #events;
+		  add: self apiAndEventsLayout;
+		  spacing: 3;
 		  yourself
 ]
 
 { #category : #initialization }
 ProtocolViewerPresenter >> initializePresenters [
 
-	models := self instantiate: ProtocolMethodListPresenter.
+	models := self instantiate: WidgetClassListPresenter.
 	api := self instantiate: ProtocolMethodListPresenter.
 	events := self instantiate: ProtocolMethodListPresenter.
 
@@ -87,7 +96,24 @@ ProtocolViewerPresenter >> verticalLayout [
 
 	^ SpBoxLayout newTopToBottom
 		  add: #models;
-		  add: #api;
-		  add: #events;
+		  add: self apiAndEventsLayout;
 		  yourself
+]
+
+{ #category : #api }
+ProtocolViewerPresenter >> whenAPIChangedDo: aBlock [
+
+	api whenSelectedItemChanged: aBlock
+]
+
+{ #category : #api }
+ProtocolViewerPresenter >> whenClassChangedDo: aBlock [
+
+	models whenSelectedItemChanged: aBlock
+]
+
+{ #category : #api }
+ProtocolViewerPresenter >> whenEventChangedDo: aBlock [
+
+	events whenSelectedItemChanged: aBlock
 ]
