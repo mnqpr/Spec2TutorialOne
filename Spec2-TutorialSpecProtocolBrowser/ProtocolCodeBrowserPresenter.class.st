@@ -28,6 +28,7 @@ ProtocolCodeBrowserPresenter >> defaultLayout [
 	^ SpBoxLayout newVertical
 		  add: viewer;
 		  add: text;
+		  spacing: 3;
 		  yourself
 ]
 
@@ -45,5 +46,6 @@ ProtocolCodeBrowserPresenter >> initializePresenters [
 { #category : #initialization }
 ProtocolCodeBrowserPresenter >> initializeWindow: aWindowPresenter [
 
-	aWindowPresenter title: 'Spec Protocol Browser'
+	aWindowPresenter title: 'Spec Protocol Browser';
+	initialExtent: 900 @ 800
 ]

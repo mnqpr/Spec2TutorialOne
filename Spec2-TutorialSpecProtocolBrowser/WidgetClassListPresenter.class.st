@@ -33,5 +33,5 @@ WidgetClassListPresenter >> initializeWindow: aWindowPresenter [
 { #category : #'api-events' }
 WidgetClassListPresenter >> whenSelectedItemChanged: aBlock [
 
-	list whenSelectedItemChanged: aBlock
+	list whenSelectionChangedDo: aBlock
 ]
