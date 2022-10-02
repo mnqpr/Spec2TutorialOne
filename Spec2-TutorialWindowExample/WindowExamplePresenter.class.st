@@ -38,7 +38,8 @@ WindowExamplePresenter >> initializeWindow: aWindowPresenter [
 		title: 'Example Window';
 		whenClosedDo: [ UIManager default inform: 'When closed' ];
 		whenOpenedDo: [ UIManager default inform: 'When open' ];
-		initialExtent: 90 @ 90
+		initialExtent: 90 @ 90";
+		windowIcon: self taskbarIcon"
 ]
 
 { #category : #private }
@@ -47,4 +48,10 @@ WindowExamplePresenter >> okToChange [
 	^ self hasWindow
 		ifTrue: [ false ]
 		ifFalse: [ true ]
+]
+
+{ #category : #icons }
+WindowExamplePresenter >> taskbarIcon [
+
+	^ Smalltalk ui icons iconNamed: #thumbsUp
 ]
