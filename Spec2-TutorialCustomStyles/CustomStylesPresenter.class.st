@@ -13,6 +13,27 @@ Class {
 }
 
 { #category : #initialization }
+CustomStylesPresenter >> connectPresenters [
+
+	zoomInButton action: [ 
+		text
+			removeStyle: 'smallFontSize';
+			addStyle: 'bigFontSize' ].
+	zoomOutButton action: [ 
+		text
+			removeStyle: 'bigFontSize';
+			addStyle: 'smallFontSize' ].
+	codeFontButton action: [ 
+		text
+			removeStyle: 'textFont';
+			addStyle: 'codeFont' ].
+	textFontButton action: [ 
+		text
+			removeStyle: 'codeFont';
+			addStyle: 'textFont' ]
+]
+
+{ #category : #layout }
 CustomStylesPresenter >> defaultLayout [
 
 	^ SpBoxLayout newTopToBottom
@@ -53,7 +74,29 @@ CustomStylesPresenter >> initializePresenters [
 		text: String loremIpsum.
 
 	label := self newLabel.
-	label label: 'Lorem ipsum'
+	label label: 'Lorem ipsum'.
+	
+	self initializeStyles
+]
+
+{ #category : #initialization }
+CustomStylesPresenter >> initializeStyles [
+
+	label addStyle: 'labelStyle'.
+	label addStyle: 'lightGreen'.
+	
+	text addStyle: 'codeFont'.
+	text addStyle: 'smallFont'.
+	
+	text addStyle: 'bgOpaque'.
+	
+	zoomInButton addStyle: 'icon'.
+	zoomOutButton addStyle: 'icon'.
+	
+	codeFontButton addStyle: 'buttonStyle'.
+	textFontButton addStyle: 'buttonStyle'.
+	
+	self addStyle: 'container'
 ]
 
 { #category : #initialization }

@@ -4,6 +4,12 @@ Class {
 	#category : #'Spec2-TutorialCustomStyles'
 }
 
+{ #category : #running }
+CustomStylesApplication >> start [
+
+	(self new: CustomStylesPresenter) open
+]
+
 { #category : #styling }
 CustomStylesApplication >> styleSheet [
 
