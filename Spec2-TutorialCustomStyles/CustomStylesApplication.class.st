@@ -7,7 +7,7 @@ Class {
 { #category : #running }
 CustomStylesApplication >> start [
 
-	(self new: CustomStylesPresenter) open
+	(self new: CustomStylesPresenter) open 
 ]
 
 { #category : #styling }
