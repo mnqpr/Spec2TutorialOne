@@ -21,6 +21,11 @@ TODOTask >> initialize [
 	self done: false
 ]
 
+{ #category : #api }
+TODOTask >> isDone [
+	^ done
+]
+
 { #category : #accessing }
 TODOTask >> title [
 
