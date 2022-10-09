@@ -10,8 +10,17 @@ Class {
 { #category : #adding }
 TODOListPresenter >> addTask [
 
-	(TODOTaskPresenter newApplication: self)
+	(TODOTaskPresenter newApplication: self application)
 		task: TODOTask new;
+		open.
+	self updatePresenter
+]
+
+{ #category : #'menu commands' }
+TODOListPresenter >> editSelectedTask [
+
+	(TODOTaskPresenter newApplication: self application)
+		task: todoListPresenter selection selectedItem;
 		openModal.
 	self updatePresenter
 ]
@@ -32,6 +41,7 @@ TODOListPresenter >> initializePresenters [
 		                     (SpStringTableColumn
 			                      title: 'Title'
 			                      evaluated: [ :task | task title ]);
+		                     contextMenu: self todoListContextMenu;
 		                     yourself.
 
 	addButton := self newButton
@@ -55,6 +65,27 @@ TODOListPresenter >> initializeWindow: aWindowPresenter [
 	aWindowPresenter
 		title: 'TODO List';
 		initialExtent: 500 @ 500
+]
+
+{ #category : #'menu commands' }
+TODOListPresenter >> removeSelectedTask [
+
+	todoListPresenter selection selectedItem remove.
+	self updatePresenter
+]
+
+{ #category : #'menu commands' }
+TODOListPresenter >> todoListContextMenu [
+
+	^ self newMenu
+		  addItem: [ :item | 
+			  item
+				  name: 'Edit...';
+				  action: [ self editSelectedTask ] ];
+		  addItem: [ :item | 
+			  item
+				  name: 'Remove';
+				  action: [ self removeSelectedTask ] ]
 ]
 
 { #category : #initialization }

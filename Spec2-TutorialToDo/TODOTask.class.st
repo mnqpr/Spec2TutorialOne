@@ -26,6 +26,10 @@ TODOTask >> isDone [
 	^ done
 ]
 
+{ #category : #removing }
+TODOTask >> remove [
+]
+
 { #category : #accessing }
 TODOTask >> title [
 

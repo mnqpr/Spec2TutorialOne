@@ -20,7 +20,7 @@ TODOTaskPresenter >> initializeDialogWindow: aDialogWindowPresenter [
 
 	aDialogWindowPresenter
 		title: 'New task';
-		initialExtent: 35 @ 120;
+		initialExtent: 350 @ 120;
 		addButton: 'Save' do: [ :dialog | 
 			self accept.
 			dialog close ];
